@@ -37,7 +37,7 @@ export default {
       createPost(post){
          // this.posts.push(post);
          this.dialogVisible = false;
-         const addNewPost=fetch('http://localhost:3001/posts', {
+         this.posts=fetch('http://localhost:3001/posts', {
             method: 'POST',
             body: JSON.stringify(post),
             headers: {
@@ -49,7 +49,7 @@ export default {
       },
       removePost(post){
          // this.posts = this.posts.filter(p => p.id != post.id);
-         const removePost=fetch('http://localhost:3001/posts/' + post.id, {
+         this.posts=fetch('http://localhost:3001/posts/' + post.id, {
             method: 'DELETE',
          })
          .then((response) => response.json())
