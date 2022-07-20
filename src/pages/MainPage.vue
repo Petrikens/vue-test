@@ -48,12 +48,8 @@ export default {
          .then((json) => console.log(json));
       },
       removePost(post){
-         // this.posts = this.posts.filter(p => p.id != post.id);
-         this.posts=fetch('http://localhost:3001/posts/' + post.id, {
-            method: 'DELETE',
-         })
-         .then((response) => response.json())
-         .then((json) => console.log(json));
+         axios.delete(`http://localhost:3001/posts/${post.id}`)
+         this.items = this.items.filter(item => item.id !== id)
       },
       showDialog(){
          this.dialogVisible = true;
