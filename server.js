@@ -1,15 +1,12 @@
-const jsonServer = require('json-server');
-const server = jsonServer.create();
-const router = jsonServer.router('./public/db.json');
-const middlewares = jsonServer.defaults({
-    static: './dist',
-});
+const express = require('express');
+const serveStatic = require('serve-static');
+const path = require('path');
 
-const PORT = process.env.PORT || 8080;
+const app = express();
 
-server.use(middlewares);
-server.use(router);
+app.use('/', serveStatic(path.join(__dirname, 'dist/db.json')));
 
-server.listen(PORT, () => {
-    console.log('Server is running');
-});
+const port = pricess.env.PORT || 8080;
+app.listen(port);
+
+console.log('Listening on port:' + port);
